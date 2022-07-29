@@ -17,19 +17,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
-            self.start()
+        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { _ in
+            self.throwRock()
         })
         timerCollision = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
             self.trackCollision()
         })
         loadPlayer()
         addGesture()
-        start()
     }
 
 
-    func start() {
+    func throwRock() {
         let randomW = Int.random(in: 10..<200)
         let randomX = Int(arc4random_uniform(UInt32(UIScreen.main.bounds.width))) - Int(randomW / 2)
         let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: 50, height: 50))
