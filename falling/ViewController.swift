@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var bgImage: UIImageView!
-    let numberOfRocks = 10000
     var rocks: [UIImageView] = []
     var player: UIImageView!
     var timerRocks: Timer!
@@ -17,7 +16,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { _ in
+        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { _ in
             self.throwRock()
         })
         timerCollision = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
@@ -32,7 +31,9 @@ class ViewController: UIViewController {
         let randomW = Int.random(in: 10..<200)
         let randomX = Int(arc4random_uniform(UInt32(UIScreen.main.bounds.width))) - Int(randomW / 2)
         let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: 50, height: 50))
-        rock.image = UIImage(named: "meteor")
+        rock.layer.cornerRadius = 25
+        let texture = ["meteor", "meteor2", "meteor3"]
+        rock.image = UIImage(named: texture.randomElement()!)
         self.rocks.append(rock)
         self.view.addSubview(rock)
         UIView.animate(withDuration: 3, delay: TimeInterval(2), options: .curveLinear) {
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
     func loadPlayer(){
         player = UIImageView(frame: CGRect(x: -50, y: -300, width: 50, height: 50))
         player.image = UIImage(named: "ovni")
+        player.layer.cornerRadius = 25
         player.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 300)
         self.view.addSubview(player)
     }
@@ -73,12 +75,13 @@ class ViewController: UIViewController {
             pauseLayer(layer: rock.layer)
             timerRocks.invalidate()
         }
+        player.gestureRecognizers = nil
         pauseLayer(layer: player.layer)
     }
 
     @objc func trackUser(gesture: UIGestureRecognizer) {
         let fingerLocation = gesture.location(in: self.view)
-        player.center = CGPoint(x: fingerLocation.x, y: fingerLocation.y - 40)
+        self.player.center = CGPoint(x: fingerLocation.x, y: fingerLocation.y - 40)
     }
 
     func pauseLayer(layer: CALayer) {
