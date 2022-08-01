@@ -19,19 +19,28 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="m3l-zz-8Be">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ep2-jI-q6K">
+                                <rect key="frame" x="343" y="44" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Hlk-aU-c2e"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="m3l-zz-8Be" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1vQ-ce-hu5"/>
                             <constraint firstAttribute="bottom" secondItem="m3l-zz-8Be" secondAttribute="bottom" id="CIK-eG-QzZ"/>
+                            <constraint firstItem="ep2-jI-q6K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ODC-U8-q92"/>
                             <constraint firstItem="m3l-zz-8Be" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jb9-ZS-O1d"/>
                             <constraint firstItem="m3l-zz-8Be" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pvl-N7-y6Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ep2-jI-q6K" secondAttribute="trailing" constant="22" id="tPO-X4-Uaa"/>
                             <constraint firstItem="m3l-zz-8Be" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uZC-Oh-QBP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bgImage" destination="m3l-zz-8Be" id="a3e-4X-0aO"/>
+                        <outlet property="debugSwitch" destination="ep2-jI-q6K" id="PLg-YQ-Nfs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
