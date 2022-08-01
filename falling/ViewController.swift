@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     func throwRock() {
         let randomW = Int.random(in: 10..<200)
         let randomX = Int(arc4random_uniform(UInt32(UIScreen.main.bounds.width))) - Int(randomW / 2)
-        let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: 50, height: 50))
+        let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: 30, height: 30))
         let texture = ["meteor", "meteor2", "meteor3"]
         rock.image = isDebug ? nil : UIImage(named: texture.randomElement()!)
         rock.backgroundColor = isDebug ? .blue : .clear
@@ -80,6 +80,7 @@ class ViewController: UIViewController {
 
     func generateImpact(for intersection: CGRect){
         let impact = UIImageView(frame: CGRect(x: intersection.origin.x, y: intersection.origin.y , width: 25, height: 25))
+        impact.center = intersection.origin
         impact.image = UIImage(named: "impact")
         self.view.addSubview(impact)
     }
