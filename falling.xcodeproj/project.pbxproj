@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		C106756F289282B1008D7085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106756E289282B1008D7085 /* AppDelegate.swift */; };
 		C1067571289282B1008D7085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1067570289282B1008D7085 /* SceneDelegate.swift */; };
-		C1067573289282B1008D7085 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1067572289282B1008D7085 /* ViewController.swift */; };
+		C1067573289282B1008D7085 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1067572289282B1008D7085 /* GameController.swift */; };
 		C1067576289282B1008D7085 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1067574289282B1008D7085 /* Main.storyboard */; };
 		C1067578289282B2008D7085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1067577289282B2008D7085 /* Assets.xcassets */; };
 		C106757B289282B2008D7085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1067579289282B2008D7085 /* LaunchScreen.storyboard */; };
+		C18EA63E289DADFF00D556EF /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18EA63D289DADFF00D556EF /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C106756B289282B1008D7085 /* falling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = falling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C106756E289282B1008D7085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1067570289282B1008D7085 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1067572289282B1008D7085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1067572289282B1008D7085 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		C1067575289282B1008D7085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1067577289282B2008D7085 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C106757A289282B2008D7085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C106757C289282B2008D7085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C18EA63D289DADFF00D556EF /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				C106756E289282B1008D7085 /* AppDelegate.swift */,
 				C1067570289282B1008D7085 /* SceneDelegate.swift */,
-				C1067572289282B1008D7085 /* ViewController.swift */,
+				C1067572289282B1008D7085 /* GameController.swift */,
+				C18EA63D289DADFF00D556EF /* GameViewModel.swift */,
 				C1067574289282B1008D7085 /* Main.storyboard */,
 				C1067577289282B2008D7085 /* Assets.xcassets */,
 				C1067579289282B2008D7085 /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1067573289282B1008D7085 /* ViewController.swift in Sources */,
+				C18EA63E289DADFF00D556EF /* GameViewModel.swift in Sources */,
+				C1067573289282B1008D7085 /* GameController.swift in Sources */,
 				C106756F289282B1008D7085 /* AppDelegate.swift in Sources */,
 				C1067571289282B1008D7085 /* SceneDelegate.swift in Sources */,
 			);
@@ -287,7 +291,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 96W3Z42U5V;
+				DEVELOPMENT_TEAM = R88CDNMKLQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = falling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,7 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 96W3Z42U5V;
+				DEVELOPMENT_TEAM = R88CDNMKLQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = falling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
