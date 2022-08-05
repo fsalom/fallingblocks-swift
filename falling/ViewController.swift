@@ -18,12 +18,14 @@ class ViewController: UIViewController {
     var timerRocks: Timer!
     var timerCollision: Timer!
     var isDebug: Bool = false
+    var panGesture: UIPanGestureRecognizer!
     var originalPoint = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 300)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadButton()
         loadPlayer()
+        animateButton()
     }
 
 
@@ -51,12 +53,13 @@ class ViewController: UIViewController {
         startButton.isEnabled = false
         animateButton()
         resumeAnimation(layer: player.layer)
-        player.gestureRecognizers?.removeAll()
-        UIView.animate(withDuration: 5, delay: 0, options: .curveEaseInOut) {
+        player.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 5, delay: 2, options: .curveEaseIn) {
             self.player.center = self.originalPoint
         } completion: { _ in
             self.startButton.isEnabled = true
-            self.addGesture()
+            self.player.isUserInteractionEnabled = true
+            self.startButton.isUserInteractionEnabled = true
             self.removeAllRocks()
         }
     }
@@ -96,7 +99,7 @@ class ViewController: UIViewController {
     @objc func startGame(){
         addGesture()
         startButton.layer.removeAllAnimations()
-        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { _ in
+        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { _ in
             self.throwRock()
         })
         timerCollision = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
@@ -128,9 +131,9 @@ class ViewController: UIViewController {
     }
 
     func addGesture(){
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(trackUser))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(trackUser))
         player.isUserInteractionEnabled = true
-        player.addGestureRecognizer(pan)
+        player.addGestureRecognizer(panGesture)
     }
 
     func trackCollision() {
@@ -148,7 +151,6 @@ class ViewController: UIViewController {
                 endGame()
                 restartGame()
             }
-
         }
     }
 
