@@ -9,9 +9,12 @@ final class GameViewModel {
     var player: UIImageView!
     var impact: UIImageView!
     var instructionLabel: UILabel!
+    var scoreLabel: UILabel!
     var timerRocks: Timer!
     var timerCollision: Timer!
     var isDebug: Bool = false
+    let textures = ["meteor", "meteor2", "meteor3"]
+    var countOfRocks = 0
     var panGesture: UIPanGestureRecognizer!
     var originalPoint = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 300)
 
@@ -24,9 +27,11 @@ final class GameViewModel {
         customButton()
         customPlayer()
         customLabel()
+        customScoreLabel()
         animateButton()
         self.screen.addSubview(player)
         self.screen.addSubview(startButton)
+        self.screen.addSubview(scoreLabel)
         self.screen.addSubview(instructionLabel)
     }
 }
@@ -43,10 +48,10 @@ extension GameViewModel {
         addGesture()
         animateLabel()
         startButton.layer.removeAllAnimations()
-        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { _ in
+        timerRocks = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { _ in
             self.throwRock()
         })
-        timerCollision = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+        timerCollision = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
             self.trackCollision()
         })
         startButton.isHidden.toggle()
@@ -59,13 +64,14 @@ extension GameViewModel {
 
     //MARK:  - Timer actions
     func throwRock() {
-        let randomW = Int.random(in: 10..<200)
+        let randomW = Int.random(in: 10..<50)
         let randomX = Int(arc4random_uniform(UInt32(UIScreen.main.bounds.width))) - Int(randomW / 2)
-        let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: 30, height: 30))
-        let texture = ["meteor", "meteor2", "meteor3"]
-        rock.image = isDebug ? nil : UIImage(named: texture.randomElement()!)
+        let rock = UIImageView(frame: CGRect(x: randomX, y: -200, width: randomW, height: randomW))
+        rock.image = isDebug ? nil : UIImage(named: textures.randomElement()!)
         rock.backgroundColor = isDebug ? .blue : .clear
         rocks.append(rock)
+        countOfRocks += 1
+        scoreLabel.text = "\(countOfRocks)"
         self.screen.addSubview(rock)
         UIView.animate(withDuration: 3, delay: TimeInterval(2), options: .curveLinear) {
             rock.frame.origin.y =  rock.frame.origin.y + UIScreen.main.bounds.height + 200
@@ -137,6 +143,15 @@ extension GameViewModel {
         instructionLabel.isHidden = true
     }
 
+    func customScoreLabel() {
+        scoreLabel = UILabel(frame: CGRect(x: -50, y: -300 , width: 200, height: 50))
+        scoreLabel.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 60)
+        scoreLabel.text = "\(countOfRocks)"
+        scoreLabel.textAlignment = .center
+        scoreLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        scoreLabel.textColor = .white
+    }
+
     func animateLabel() {
         instructionLabel.alpha = 1
         instructionLabel.isHidden = false
@@ -182,6 +197,7 @@ extension GameViewModel {
             self.startButton.isEnabled = true
             self.player.isUserInteractionEnabled = true
             self.startButton.isUserInteractionEnabled = true
+            self.countOfRocks = 0
             self.removeAllRocks()
         }
     }
