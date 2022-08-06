@@ -8,9 +8,9 @@ This game is an experiment to create a simple game where objects are falling con
 
 ## Screenshots and video
 
-Game             |  
-:-------------------------:|
-![image](media/screen.png)  | 
+Screen 1             |  Screen 2             |  Video             |  
+:-------------------------:|:-------------------------:|:-------------------------:|
+![image](media/screen1.png)  | ![image](media/screen2.png)  | ![image](media/video.gif)  | 
 
 ## Problems solving
 ### Phase 1 - **Fall of random objects**
